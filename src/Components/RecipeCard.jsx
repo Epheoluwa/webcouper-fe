@@ -8,7 +8,17 @@ import SkipNextIcon from '@mui/icons-material/SkipNext';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 const RecipeCard = () => {
     return (
-        <Card>
+        <Card
+        sx={{
+            width: {
+              xs: '100%', 
+              sm: '100%', 
+              md: '100%',  
+              lg: '100%', 
+            },
+            height:'100%',
+          }}
+        >
             <Grid container spacing={2}>
                 <Grid item xs={6}>
                     <CardMedia
@@ -21,17 +31,19 @@ const RecipeCard = () => {
                 <Grid item xs={6}>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Lizard
+                            Name
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                            species, ranging across all continents except Antarctica
+                           Description
+                        </Typography>
+                        <Typography variant="h5" color="text.secondary">
+                           Price
                         </Typography>
                     </CardContent>
                 </Grid>
                 <Grid item xs={12}>
                     <Button variant="contained" endIcon={<CurrencyExchangeIcon />} fullWidth>
-                        Send
+                        CONVERT 
                     </Button>
                 </Grid>
             </Grid>
