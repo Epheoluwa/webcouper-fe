@@ -3,6 +3,7 @@ import {Box,BottomNavigation, BottomNavigationAction, Paper } from '@mui/materia
 import HomeIcon from '@mui/icons-material/Home';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => {
     const [value, setValue] = useState(0);
@@ -16,6 +17,7 @@ const Navigation = () => {
             setValue(newValue);
           }}
         >
+            
           <BottomNavigationAction label="Home" icon={<HomeIcon />} />
           <BottomNavigationAction label="Recipe" icon={<FastfoodIcon />} />
           <BottomNavigationAction label="Location" icon={<LocationOnIcon />} />
