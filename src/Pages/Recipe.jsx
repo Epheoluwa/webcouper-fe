@@ -646,17 +646,7 @@ const prodd = [
 ];
 const Recipe = () => {
     const [Loading, setLoading] = useState(true)
-    // const [data, setData] = useState([])
-    const [data, setData] = useState(prodd)
-    // const options = {
-    //     method: 'GET',
-    //     url: 'https://kfc-chickens.p.rapidapi.com/chickens',
-    //     headers: {
-    //         'X-RapidAPI-Key': process.env.REACT_APP_KFC_API_KEY,
-    //         'X-RapidAPI-Host': 'kfc-chickens.p.rapidapi.com'
-    //     }
-    // };
-    // console.log(data);
+    const [data, setData] = useState(prodd) 
     const options = {
         method: 'GET',
         url: 'https://burgers-hub.p.rapidapi.com/burgers',
