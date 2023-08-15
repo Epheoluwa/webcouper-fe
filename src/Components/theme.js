@@ -11,7 +11,7 @@ const theme = createTheme({
     
   },
   typography: {
-    fontFamily: 'fantasy, sans-serif',
+    fontFamily: 'monospace, sans-serif',
   },
 
 });

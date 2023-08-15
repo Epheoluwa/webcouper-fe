@@ -22,7 +22,7 @@ export const LinkButton = styled(Link)`
     color: white;
     font-size: 0.9rem;
     font-weight: 800;
-    font-family: fantasy;
+    font-family: monospace;
     margin: 1rem 0;
     cursor: pointer;
     text-align: center;
@@ -38,6 +38,6 @@ export const TitleWord = styled(Typography)`
     text-align: center;
     font-size: 3.5rem !important;
     font-weight: 900;
-    font-family: fantasy;
+    font-family: monospace;
     margin-top: 80px !important;
 `;
