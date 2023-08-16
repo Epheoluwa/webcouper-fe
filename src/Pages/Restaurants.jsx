@@ -15,11 +15,7 @@ const Restaurants = () => {
             const apiKey = process.env.REACT_APP_GEOAPIFY_API_KEY;
             const radius = 5000;
             const limit = 20;
-            // const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=${radius}&type=restaurant&key=${apiKey}`;
             const url = `https://api.geoapify.com/v2/places?categories=catering.restaurant&filter=circle:${longitude},${latitude},${radius}&limit=${limit}&apiKey=${apiKey}`;
-
-
-
             const response = await axios.get(url);
             setRestaurants(response.data.features);
             setLoading(false)

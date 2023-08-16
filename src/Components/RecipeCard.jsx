@@ -70,7 +70,6 @@ const RecipeCard = ({ data }) => {
                         <CardMedia
                             component="img"
                             sx={{ width: 151 }}
-                            // image={firstImageSm}
                             image={data.image}
                             alt="recipe Image"
                         />
