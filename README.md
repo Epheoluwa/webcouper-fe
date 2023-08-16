@@ -11,5 +11,4 @@ Frontend assessment task for webcoupers.
 
 ### `Please Note`
 
-•	The free recipe API used only allows 10 request per day <br>
 •	The API for currency conversion is a 7days free trial which expires on 22nd August 2023<br>
