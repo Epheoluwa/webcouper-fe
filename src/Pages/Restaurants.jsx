@@ -1,53 +1,29 @@
-import React,{useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import Navigation from '../Components/Navigation'
+import { Typography, Card, Grid, CardContent, CardActionArea, Divider, Box, } from '@mui/material';
+import RestLoading from '../Components/RestLoading';
 const Restaurants = () => {
-  // const [location, setLocation] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [restaurants, setRestaurants] = useState([]);
-
-  // useEffect(() => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(
-  //       (position) => {
-  //         const { latitude, longitude } = position.coords;
-  //         setLocation({ latitude, longitude });
-  //       },
-  //       (error) => {
-  //         console.error(error);
-  //       }
-  //     );
-
-  //          // Fetch nearby restaurants
-  //          if (location) {
-  //           const apiKey =  process.env.REACT_APP_GOOGLE_API_KEY;
-  //           const radius = 1000; // Radius in meters
-  //           const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.latitude},${location.longitude}&radius=${radius}&type=restaurant&key=${apiKey}`;
-    
-  //           axios.get(url)
-  //             .then(response => {
-  //               console.log(response);
-  //               setRestaurants(response.data.results);
-  //             })
-  //             .catch(error => {
-  //               console.error(error);
-  //             });
-  //         }
-  //   }
-  // }, [location]);
-
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
           const { latitude, longitude } = position.coords;
           try {
-            // const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-            const apiKey =  process.env.REACT_APP_GOOGLE_API_KEY;
-            const radius = 1000;
-            const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=${radius}&type=restaurant&key=${apiKey}`;
+            const apiKey = process.env.REACT_APP_GEOAPIFY_API_KEY;
+            const radius = 5000;
+            const limit = 20;
+            // const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=${radius}&type=restaurant&key=${apiKey}`;
+            const url = `https://api.geoapify.com/v2/places?categories=catering.restaurant&filter=circle:${longitude},${latitude},${radius}&limit=${limit}&apiKey=${apiKey}`;
 
-            const response = await axios.get(url);
-            setRestaurants(response.data.results);
+
+
+            // const response = await axios.get(url);
+            // setRestaurants(response.data.features);
+            // setLoading(false)
+            // console.log(response);
           } catch (error) {
             console.error(error);
           }
@@ -57,20 +33,47 @@ const Restaurants = () => {
         }
       );
     }
+
   }, []);
-
-
   return (
     <>
-    <div>
-      <h2>Restaurants Near Me</h2>
-      <ul>
-        {restaurants.map(restaurant => (
-          <li key={restaurant.place_id}>{restaurant.name}</li>
-        ))}
-      </ul>
-    </div>
-    <Navigation />
+
+      <Typography variant='h4' align='center'>
+        Restaurants Near Me
+      </Typography>
+      <Divider />
+      {
+        loading ?
+          <RestLoading />
+          :
+          <Box mt={5}>
+            <Grid container spacing={4}>
+              {restaurants?.map(
+                (restaurant, index) => (
+                  <Grid item xs={12} md={12} key={index}>
+                    <Card
+                      sx={{ maxWidth: 500, margin: 'auto' }}
+                    >
+                      <CardActionArea>
+                        <CardContent>
+                          <Typography gutterBottom variant="h5" component="div">
+                            Name: {restaurant.properties.name}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            Address: {restaurant.properties.address_line2}
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
+
+                    </Card>
+                  </Grid>
+                )
+              )}
+            </Grid>
+          </Box>  
+      }
+
+      <Navigation />
     </>
   )
 }
