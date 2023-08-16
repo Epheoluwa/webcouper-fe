@@ -25,13 +25,7 @@ const RecipeCard = ({ data }) => {
     });
 
     const handleClose = () => setOpen(false);
-    if (!data || !data.images || data.images.length === 0) {
-        return null; // Return null or a placeholder if data is missing or empty
-    }
-
-
-    const firstImageSm = data.images[0].sm;
-    const price = data.price + 1234; //just added this because the price was small
+    const price = Math.floor(Math.random() * 10000) + 1;
 
     const handleOpen = async () => {
         setOpen(true);
@@ -68,14 +62,16 @@ const RecipeCard = ({ data }) => {
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
                         <Typography gutterBottom variant="h5" component="div" align='center'>
-                            {data.name}
+                            {/* {data.name} */}
+                            {data.knownAs}
                         </Typography>
                     </Grid>
                     <Grid item xs={6}>
                         <CardMedia
                             component="img"
                             sx={{ width: 151 }}
-                            image={firstImageSm}
+                            // image={firstImageSm}
+                            image={data.image}
                             alt="recipe Image"
                         />
                     </Grid>
@@ -83,7 +79,12 @@ const RecipeCard = ({ data }) => {
                         <CardContent>
 
                             <Typography variant="body2" color="text.secondary">
-                                {data.desc}
+                                {/* {data.desc} */}
+                               Category: {data.category}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                {/* {data.desc} */}
+                               Calories: {data.nutrients?.ENERC_KCAL}
                             </Typography>
                             <Typography variant="h5" color="text.secondary">
                                 &#8358;{" "}
@@ -91,7 +92,7 @@ const RecipeCard = ({ data }) => {
                             </Typography>
                         </CardContent>
                         <Button variant="contained" endIcon={<CurrencyExchangeIcon />} fullWidth onClick={handleOpen}>
-                           CLICK TO SEE PRICE IN USD
+                             SEE PRICE IN USD
                         </Button>
                     </Grid>
 

@@ -9,13 +9,18 @@ import Eating from '../Components/Eating';
 const Recipe = () => {
     const [Loading, setLoading] = useState(true)
     const [data, setData] = useState([])
-    
+
     const options = {
         method: 'GET',
-        url: 'https://burgers-hub.p.rapidapi.com/burgers',
+        url: 'https://edamam-food-and-grocery-database.p.rapidapi.com/api/food-database/v2/parser',
+        params: {
+          'nutrition-type': 'cooking',
+          'category[0]': 'generic-foods',
+          'health[0]': 'alcohol-free'
+        },
         headers: {
-          'X-RapidAPI-Key': process.env.REACT_APP_KFC_API_KEY,
-          'X-RapidAPI-Host': 'burgers-hub.p.rapidapi.com'
+          'X-RapidAPI-Key': process.env.REACT_APP_EDAMAM_API_KEY,
+          'X-RapidAPI-Host': 'edamam-food-and-grocery-database.p.rapidapi.com'
         }
       };
 
@@ -25,9 +30,9 @@ const Recipe = () => {
                 let recipe = res.data;
                 if (recipe) {
                     setLoading(false);
-                    setData(recipe);
+                    setData(recipe.hints);
                 }
-                console.log(recipe);
+                // console.log(recipe.hints);
             })
             .catch(error => {
                 console.log(error);
@@ -51,7 +56,7 @@ const Recipe = () => {
                                     {data?.map(
                                         (item, index) => (
                                             <Grid item xs={4} md={4} key={index}>
-                                                <RecipeCard data={item} />
+                                                <RecipeCard data={item.food} />
                                             </Grid>
                                         )
                                     )}
