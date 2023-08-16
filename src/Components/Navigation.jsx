@@ -8,7 +8,7 @@ import { Link, useLocation } from 'react-router-dom';
 const Navigation = () => {
   const location = useLocation();
   const [value, setValue] = useState(0);
-
+console.log(value);
   const paths = ['/', '/recipes', '/restaurants'];
   const currentIndex = paths.indexOf(location.pathname);
 

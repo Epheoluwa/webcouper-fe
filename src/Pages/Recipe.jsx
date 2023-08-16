@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid';
-import axios from 'axios';
 
 import RecipeCard from '../Components/RecipeCard'
 import { SectionBody } from '../StyledComponent/GlobalStyles';
@@ -646,34 +645,36 @@ const prodd = [
 ];
 const Recipe = () => {
     const [Loading, setLoading] = useState(true)
-    const [data, setData] = useState(prodd) 
-    const options = {
-        method: 'GET',
-        url: 'https://burgers-hub.p.rapidapi.com/burgers',
-        headers: {
-          'X-RapidAPI-Key': process.env.REACT_APP_KFC_API_KEY,
-          'X-RapidAPI-Host': 'burgers-hub.p.rapidapi.com'
-        }
-      };
+    const [data, setData] = useState() 
+    // setData(prodd)
+    // const options = {
+    //     method: 'GET',
+    //     url: 'https://burgers-hub.p.rapidapi.com/burgers',
+    //     headers: {
+    //       'X-RapidAPI-Key': process.env.REACT_APP_KFC_API_KEY,
+    //       'X-RapidAPI-Host': 'burgers-hub.p.rapidapi.com'
+    //     }
+    //   };
 
-    const fetchrecipe = async () => {
-        await axios.request(options)
-            .then(res => {
-                let recipe = res.data;
-                if (recipe) {
-                    setLoading(false);
-                    setData(recipe);
-                }
-                console.log(recipe);
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }
+    // const fetchrecipe = async () => {
+    //     await axios.request(options)
+    //         .then(res => {
+    //             let recipe = res.data;
+    //             if (recipe) {
+    //                 setLoading(false);
+    //                 setData(recipe);
+    //             }
+    //             console.log(recipe);
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //         })
+    // }
 
 
     useEffect(() => {
         // fetchrecipe()
+        setData(prodd)
         setTimeout(() => {
             setLoading(false);
         },3000)
