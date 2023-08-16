@@ -91,7 +91,7 @@ const RecipeCard = ({ data }) => {
                             </Typography>
                         </CardContent>
                         <Button variant="contained" endIcon={<CurrencyExchangeIcon />} fullWidth onClick={handleOpen}>
-                            SEE PRICE IN USD
+                           CLICK TO SEE PRICE IN USD
                         </Button>
                     </Grid>
 

@@ -20,9 +20,9 @@ const Restaurants = () => {
 
 
 
-            // const response = await axios.get(url);
-            // setRestaurants(response.data.features);
-            // setLoading(false)
+            const response = await axios.get(url);
+            setRestaurants(response.data.features);
+            setLoading(false)
             // console.log(response);
           } catch (error) {
             console.error(error);
@@ -46,7 +46,7 @@ const Restaurants = () => {
         loading ?
           <RestLoading />
           :
-          <Box mt={5}>
+          <Box mt={5} mb={8}>
             <Grid container spacing={4}>
               {restaurants?.map(
                 (restaurant, index) => (

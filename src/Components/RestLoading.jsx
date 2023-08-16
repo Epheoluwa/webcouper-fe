@@ -19,7 +19,7 @@ const RestLoading = () => {
                 height={400}
                 width={600}
             />
-            <Typography variant='body2' align='center'>
+            <Typography variant='body1' align='center'>
                 Loading.......
             </Typography>
         </div>

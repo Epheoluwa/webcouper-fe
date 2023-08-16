@@ -10,7 +10,6 @@ import Walking from '../Components/Walking';
 const Home = () => {
     return (
         <SectionBody>
-
             <Box
                 sx={{
                     marginTop: '140px'
@@ -18,16 +17,16 @@ const Home = () => {
 
             >
                 <Grid container spacing={4}>
-                    <Grid item xs={3} md={3} sx={{ margin: 'auto', paddingLeft: '180px !important' }}>
+                    <Grid item xs={12} md={3} sx={{ margin: 'auto', paddingLeft: '120px !important' }}>
                         <LinkButton to='recipes'>
                             VISIT OUR RECIPES
                         </LinkButton>
                         <Woman />
                     </Grid>
-                    <Grid item xs={6} md={6}>
+                    <Grid item xs={12} md={6}>
                         <Wave />
                     </Grid>
-                    <Grid item xs={3} md={3} sx={{ margin: 'auto' }}>
+                    <Grid item xs={12} md={3} sx={{ margin: 'auto' }}>
                         <LinkButton to='restaurants'>
                             VIEW CLOSE BY RESTAURANTS
                         </LinkButton>
@@ -35,7 +34,6 @@ const Home = () => {
                     </Grid>
                 </Grid>
             </Box>
-
                 <TitleWord>
                     Miss Ore Portfolio
                 </TitleWord>

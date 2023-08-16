@@ -39,5 +39,5 @@ export const TitleWord = styled(Typography)`
     font-size: 3.5rem !important;
     font-weight: 900;
     font-family: monospace;
-    margin-top: 80px !important;
+    margin-top: 50px !important;
 `;

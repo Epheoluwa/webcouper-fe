@@ -16,7 +16,7 @@ const Woman = () => {
             <Lottie
                 options={defaultOptions}
                 height={400}
-                width={400}
+                width={300}
             />
         </div>
     )
